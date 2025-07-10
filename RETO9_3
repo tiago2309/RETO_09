@@ -1,0 +1,18 @@
+def mover_ceros_al_final(arreglo: list) -> list:
+    resultado: list = []
+    contador_ceros: int = 0
+
+    for numero in arreglo:
+        if numero != 0:
+            resultado.append(numero)
+        else:
+            contador_ceros += 1
+
+    for i in range(contador_ceros):
+        resultado.append(0)
+
+    return resultado
+
+# Ejemplo de uso
+arreglo = [0, 3, 0, 5, 7, 0, 2]
+print("Resultado:", mover_ceros_al_final(arreglo))

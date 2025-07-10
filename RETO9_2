@@ -1,0 +1,14 @@
+def producto_punto(a: list, b: list) -> float:
+    if len(a) != len(b):
+        print("Error: Los arreglos deben tener el mismo tamaño.")
+        return 0
+
+    producto: float = 0
+    for i in range(len(a)):
+        producto += a[i] * b[i]
+    return producto
+
+# Ejemplo de uso
+a = [1.5, 2.0, 3.5]
+b = [4.0, 0.5, 2.0]
+print("Producto punto:", producto_punto(a, b))
