@@ -59,19 +59,33 @@ Este programa reorganiza los elementos de una lista de números enteros para que
     print("Resultado:", mover_ceros_al_final(arreglo))
 ```
 ## 4. Revisar que son los algoritmos de sorting, entender bubble-sort (enlace a implementación).
-Este programa implementa el algoritmo de ordenamiento Bubble Sort. Ordena una lista de números enteros de menor a mayor, comparando elementos adyacentes e intercambiándolos si están en el orden incorrecto. Aunque no es el método más eficiente, es una herramienta educativa muy útil para entender los fundamentos de los algoritmos de ordenamiento.
+Este programa implementa el algoritmo Bubble Sort de forma optimizada, siguiendo la lógica estudiada en clase y el ejemplo del enlace proporcionado. Utiliza una bandera que permite detener el algoritmo si en una pasada no se realiza ningún intercambio, lo cual indica que la lista ya está ordenada. Esta mejora reduce el número de comparaciones innecesarias en listas que ya están parcialmente ordenadas.
 ```
-  def bubble_sort(lista: list) -> None:
-      n: int = len(lista)
-      for i in range(n):
+def bubble_sort(lista: list[int]) -> None:
+    """
+    Ordena la lista de menor a mayor usando el algoritmo Bubble Sort optimizado.
+
+    Parámetros:
+    lista (list[int]): Lista de números enteros a ordenar.
+
+    Retorna:
+    None (modifica la lista original).
+    """
+    n = len(lista)
+    for i in range(n):
+        hubo_intercambio = False
         for j in range(n - i - 1):
             if lista[j] > lista[j + 1]:
-                temp = lista[j]
-                lista[j] = lista[j + 1]
-                lista[j + 1] = temp
+                lista[j], lista[j + 1] = lista[j + 1], lista[j]
+                hubo_intercambio = True
 
-  # Ejemplo
-datos = [5, 3, 8, 4, 2]
-bubble_sort(datos)
-print("Ordenado:", datos)
+        # Si no hubo intercambios, la lista ya está ordenada
+        if not hubo_intercambio:
+            break
+
+# Ejemplo de uso
+if __name__ == "__main__":
+    datos = [64, 34, 25, 12, 22, 11, 90]
+    bubble_sort(datos)
+    print("Lista ordenada:", datos)
 ```
